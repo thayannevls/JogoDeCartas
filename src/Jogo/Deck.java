@@ -58,7 +58,7 @@ public class Deck {
 	}
 	
 	/*
-	 * Metodo que pega uma carta aleatoria do baralho
+	 * Metodo que escolhe uma carta aleatoria do baralho
 	 */
 	public Carta cartaAleatoria(){
 		Random random = new Random();
@@ -67,8 +67,17 @@ public class Deck {
 
 	}
 	
-	
+	/*
+	 * Metodo que retira uma carta do baralho
+	 */
+	public Carta retiraCarta(){
+		 
+		Random random = new Random();
+		int indexCarta = random.nextInt(deck.size());
+		Carta escolhida = deck.get(indexCarta);
+		deck.remove(indexCarta);
+		return escolhida;
+	}
 	
 
 }
-
