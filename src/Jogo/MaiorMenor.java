@@ -8,23 +8,8 @@ public class MaiorMenor {
 		Deck deck = new Deck(Carta.Naipe.COPAS);
 		Carta cartaSecreta = deck.cartaAleatoria();
 		
-		Scanner sc = new Scanner(System.in);
-		String chute = sc.nextLine();
-		while(chute != "sair") {
-			
-			Carta cartaChute = new Carta(Carta.toValor(chute));
-			if(cartaSecreta.equalsValor(cartaChute)){
-				System.out.println("Acertou. A carta secreta era " + cartaSecreta);
-				chute = "sair";
-			}
-			else{
-				System.out.println( cartaChute.maiorMenor(cartaSecreta) );
-				chute = sc.nextLine();
-			}
-			
-		}
+		MaiorMenorUI.maiorOuMenor(cartaSecreta);
 		
-		sc.close();
 		
 	}
 	
