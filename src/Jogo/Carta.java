@@ -53,7 +53,7 @@ public class Carta {
 	}
 	
 	/*
-	 * Compara se duas cartas sao iguais pelo valor da carta e o naipe
+	 * Compara se duas cartasprivate TipoDeck tipo; sao iguais pelo valor da carta e o naipe
 	 */
 	public boolean equals(Carta c1){
 		if((this.valor == c1.valor) && (this.naipe == c1.naipe))
@@ -114,6 +114,9 @@ public class Carta {
 
 		}
 	}
+	
+	
+	
 
 
 }

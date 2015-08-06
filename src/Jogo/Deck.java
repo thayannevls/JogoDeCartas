@@ -10,12 +10,11 @@ public class Deck {
 	/*
 	 * Enumeracao dos tipos de baralho
 	 */
-	public enum TipoDeck{SIMPLES, DUPLO};
+	public enum TipoDeck{SIMPLES, DUPLO, HAND};
 	
 	
 
-	private Vector <Carta> deck = new Vector<Carta>();
-	private TipoDeck tipo; 
+	private Vector <Carta> deck = new Vector<Carta>(); 
 	
 	/*
 	 * Construtor da classe para os baralhos de tipo simples e duplo.
@@ -58,6 +57,20 @@ public class Deck {
 	}
 	
 	/*
+	 * Construtor da classe para o tipo de deck HAND
+	 * recebe a quantidade de cartas que o jogador pode ter na mao e o baralho que ele ira retira-la
+	 */
+	
+	public Deck(int tam, Deck baralho){
+		int p;
+		for(p = 0; p < tam; p++){
+			Carta nova = baralho.retiraCarta();
+			deck.add(nova);
+		}
+	}
+	
+	
+	/*
 	 * Metodo que escolhe uma carta aleatoria do baralho
 	 */
 	public Carta cartaAleatoria(){
@@ -79,5 +92,12 @@ public class Deck {
 		return escolhida;
 	}
 	
+	public void colocaCarta(Carta carta){
+		deck.add(carta);
+	}
+	
+	public void shuffle(){
+	    Collections.shuffle(deck);
+	}
 
 }

@@ -1,6 +1,14 @@
+/*
+ * Autor : Thayanne Luiza
+ * 
+ * "Jogo maiorMenor, onde o jogador tenta acertar a carta escolhida aletoriamente pelo 
+ * computador apenas pelo seu valor. 
+ * O programa retorna ao usuario se sua carta chute eh maior ou menor que a carta secreta 
+ * ate ele ganhar."
+ * 
+ * 
+ */
 package Jogo;
-
-import java.util.Scanner;
 
 public class MaiorMenor {
 	
