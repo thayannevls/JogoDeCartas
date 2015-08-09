@@ -29,73 +29,49 @@ public class BlackJack {
 		deck.shuffle();
 		cartasJogador = new Hand(numCartasJogador  ,deck);
 		cartasDealer = new Hand(numCartasDealer, deck);
-		aposta = 0;
+		setAposta(0);
 	}
 	
-	/*
-	 * -isBlackJack-
-	 * 
-	 * Metodo que verifica se o conjunto de cartas da mao do jogador formou a jogada BLACKJACK,
-	 * ou seja, soma 21
-	 */
-	
-	public boolean isBlackJack(int soma){
-		if(soma == 21)
-			return true;
-		return false;
+	public int getNumCartasJogador(){
+		return this.numCartasJogador;
 	}
 	
-	/*
-	 * -valorCarta21-
-	 * 
-	 * Retorna o valor da carta seguindo a numeracao do BlackJack
-	 */
-	public static int valorCarta21(Carta carta){
-		ValorCarta valor = carta.getValor();
-		switch(valor){
-			case A:
-				return -1;
-			case DOIS:
-				return 2;
-			case TRES:
-				return 3;
-			case QUATRO:
-				return 4;
-			case CINCO:
-				return 5;
-			case SEIS:
-				return 6;
-			case SETE:
-				return 7;
-			case OITO:
-				return 8;
-			case NOVE:
-				return 9;
-			case DEZ:
-				return 10;
-			case J:
-				return 10;
-			case Q:
-				return 10;
-			case K:
-				return 10;
-			default:
-				return 0;
-		}
-	
+	public int getNumCartasDealer(){
+		return this.numCartasDealer;
 	}
+	
+	
+	
+	public double getAposta() {
+		return aposta;
+	}
+
+
+
+
+
+	public void setAposta(double aposta) {
+		this.aposta = aposta;
+	}
+
+
+
+
+
 	/*
 	 * Metodo do jogo para pegar uma carta do baralho
 	 */
 	public void hitMe(){
-		
+		cartasJogador.pegarCarta(deck);
+		this.numCartasJogador ++;
 	}
 	
 	/*
 	 * Metodo do jogo para dobrar a aposta antes de puxar a terceira carta
 	 */
 	public void doubleBet(){
-		
+		hitMe();
+		aposta *= aposta;
 	}
 	
 	/*
@@ -112,4 +88,80 @@ public class BlackJack {
 	public void split(){
 		
 	}
+	
+	/*
+	 * Exibe as cartas do jogoador
+	 */
+	public Carta getCartasJ(int index){
+		return cartasJogador.getHand(index);
+		
+	}
+	
+	/*
+	 * Exibe as cartas do Dealer
+	 */
+	public Carta getCartasD(int index){
+		return cartasDealer.getHand(index);
+	}
+	
+	/*
+	 * Metodo que calcula a pontuacao do jogador
+	 */
+	public int jogadorScore(){
+		int score = 0;
+		boolean temAs = false;
+		for(int p = 0; p < numCartasJogador; p++ ){
+			if(Carta.valorCartaInt(cartasJogador.getHand(p)) >= 10)
+				score += 10;
+			
+			else 
+				score += Carta.valorCartaInt(cartasJogador.getHand(p));
+			if(Carta.valorCartaInt(cartasJogador.getHand(p)) == 1)
+				temAs = true;
+		}
+		
+		if((temAs == true) && (score + 10 <= 21))
+			score += 10;
+		
+		return score;
+			
+	}
+	
+	/*
+	 * Metodo que calcula a pontuacao do Dealer
+	 */
+	public int dealerScore(){
+		int score = 0;
+		boolean temAs = false;
+		for(int p = 0; p < numCartasDealer; p++ ){
+			if(Carta.valorCartaInt(cartasDealer.getHand(p)) >= 10)
+				score += 10;
+			
+			else 
+				score += Carta.valorCartaInt(cartasDealer.getHand(p));
+			if(Carta.valorCartaInt(cartasDealer.getHand(p)) == 1)
+				temAs = true;
+		}
+		
+		if((temAs == true) && (score + 10 <= 21))
+			score += 10;
+		
+		return score;
+			
+	}
+	
+	/*
+	 * Jogadas do Dealer, ira parar qnd sua pontuacao for maior que a do jogador
+	 */
+	public void hitDealer(){
+		while(true){
+			cartasDealer.pegarCarta(deck);
+			numCartasDealer ++;
+			if(dealerScore() > jogadorScore() ){
+				break;
+			}
+		}
+	}
+	
+	
 }

@@ -69,6 +69,13 @@ public class Deck {
 		}
 	}
 	
+	public Carta getDeck(int index){
+		return deck.get(index);
+	}
+	
+	public void setDeck(Carta carta){
+		deck.add(carta);
+	}
 	
 	/*
 	 * Metodo que escolhe uma carta aleatoria do baralho
@@ -92,10 +99,16 @@ public class Deck {
 		return escolhida;
 	}
 	
-	public void colocaCarta(Carta carta){
-		deck.add(carta);
+	/*
+	 * Apenas remove a carta
+	 */
+	public void removeCarta(int index){
+		deck.remove(index);
 	}
 	
+	/*
+	 * Embaralha o deck
+	 */
 	public void shuffle(){
 	    Collections.shuffle(deck);
 	}

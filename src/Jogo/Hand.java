@@ -39,6 +39,10 @@ public class Hand {
 		
 	}
 	
+	public Carta getHand(int index){
+		return hand.getDeck(index);
+	}
+	
 	public void setTamanho(int tam){
 		this.tamanho = tam;
 	}
@@ -54,12 +58,16 @@ public class Hand {
 	
 	public void pegarCarta(Deck baralho){
 		Carta carta = baralho.retiraCarta();
-		hand.colocaCarta(carta);
+		hand.setDeck(carta);
 	}
 	
 	/*
 	 * 
 	 */
+	
+	public static int valorCartaInt(Carta carta){
+		return Carta.valorCartaInt(carta);
+	}
 	
 	
 }

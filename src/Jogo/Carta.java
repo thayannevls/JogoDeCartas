@@ -5,7 +5,22 @@ public class Carta {
 	public enum ValorCarta {A, DOIS, TRES, QUATRO, CINCO, SEIS, SETE,
 							OITO, NOVE, DEZ, J, Q, K};
 							
-	public enum Naipe {COPAS, OUROS, ESPADAS, PAUS};
+	public enum Naipe {
+		COPAS('\u2665'), OUROS('\u2666'), ESPADAS('\u2660'), PAUS('\u2663');
+		 private char value;
+		 
+		   private Naipe(char value)
+		   {
+		      this.value = value;
+		   }
+
+		   public String toString()
+		   {
+		      return this.value + " "; //will return , or ' instead of COMMA or APOSTROPHE
+		   }
+	}
+	
+
 	
 	private ValorCarta valor;
 	private Naipe naipe;
@@ -78,7 +93,7 @@ public class Carta {
 	
 	
 	public String toString(){
-		return getValor() + " DE " + getNaipe();
+		return getValor() + " " + getNaipe();
 	}
 	
 	public static ValorCarta toValor(String valor){
@@ -115,6 +130,43 @@ public class Carta {
 		}
 	}
 	
+	/*
+	 * Metodo que retorna um valor inteiro
+	 */
+	public static int valorCartaInt(Carta carta){
+		ValorCarta valor = carta.getValor();
+		switch(valor){
+			case A:
+				return 1;
+			case DOIS:
+				return 2;
+			case TRES:
+				return 3;
+			case QUATRO:
+				return 4;
+			case CINCO:
+				return 5;
+			case SEIS:
+				return 6;
+			case SETE:
+				return 7;
+			case OITO:
+				return 8;
+			case NOVE:
+				return 9;
+			case DEZ:
+				return 10;
+			case J:
+				return 11;
+			case Q:
+				return 12;
+			case K:
+				return 13;
+			default:
+				return 0;
+		}
+	
+	}
 	
 	
 
