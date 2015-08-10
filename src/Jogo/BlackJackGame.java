@@ -8,7 +8,7 @@ public class BlackJackGame {
 			int scoreJ, scoreD;
 			Scanner sc = new Scanner(System.in);
 			Scanner scS = new Scanner(System.in);
-			boolean cont = true, aposta;
+			boolean  aposta;
 			String op;
 			while(true){
 				BlackJack game = new BlackJack();

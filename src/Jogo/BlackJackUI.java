@@ -64,6 +64,7 @@ public class BlackJackUI {
 			exibirCartasJ(game);
 			
 			
+			
 		}while(op == "1");
 	}
 	
