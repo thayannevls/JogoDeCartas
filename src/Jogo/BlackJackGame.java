@@ -7,9 +7,10 @@ public class BlackJackGame {
 		try{
 			int scoreJ, scoreD;
 			Scanner sc = new Scanner(System.in);
+			Scanner scS = new Scanner(System.in);
 			boolean cont = true, aposta;
 			String op;
-			while(cont){
+			while(true){
 				BlackJack game = new BlackJack();
 				System.out.println("Aposta: ");
 				game.setAposta(sc.nextInt());
@@ -23,14 +24,20 @@ public class BlackJackGame {
 				System.out.println("--------------------------------------------");
 				aposta = BlackJackUI.resultado(game);
 				if(aposta == true)
-					System.out.println("VOCE GANHOU R$" + 2 * game.getAposta());
-					
+					System.out.println("VOCE RECEBEU R$" + 2 * game.getAposta());
+				
+				System.out.println("--------------------------------------------");	
+				
 				System.out.println("Deseja continuar? 1 - Sim 2 - Nao");
-				op = sc.nextLine();
-				if(op == "1")
-					cont = true;
-				else
-					cont = false;
+				op = scS.nextLine();
+				System.out.println(op);
+				if(op != "1")
+					break;
+				/*
+				 * int option = input.nextInt();
+input.nextLine();  // Consume newline left-over
+String str1 = input.nextLine();
+				 */
 				
 			}
 			
