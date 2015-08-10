@@ -70,8 +70,9 @@ public class BlackJack {
 	 * Metodo do jogo para dobrar a aposta antes de puxar a terceira carta
 	 */
 	public void doubleBet(){
-		hitMe();
 		aposta *= aposta;
+		hitMe();
+	
 	}
 	
 	/*
