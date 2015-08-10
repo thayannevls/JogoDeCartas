@@ -13,7 +13,9 @@ public class BlackJackGame {
 			while(true){
 				BlackJack game = new BlackJack();
 				System.out.println("Aposta: ");
+				
 				game.setAposta(sc.nextInt());
+				sc.nextLine();
 				BlackJackUI.exibirCartasJ(game);
 				BlackJackUI.jogo(game);
 				System.out.println("--------------------------------------------");
@@ -30,8 +32,8 @@ public class BlackJackGame {
 				
 				System.out.println("Deseja continuar? 1 - Sim 2 - Nao");
 				op = scS.nextLine();
-				System.out.println(op);
-				if(op != "1")
+				
+				if(!(op.equals("1")))
 					break;
 				/*
 				 * int option = input.nextInt();
