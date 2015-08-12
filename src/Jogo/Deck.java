@@ -12,7 +12,6 @@ public class Deck {
 	 */
 	public enum TipoDeck{SIMPLES, DUPLO, HAND};
 	
-	
 
 	private Vector <Carta> deck = new Vector<Carta>(); 
 	
